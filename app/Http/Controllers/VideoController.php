@@ -14,7 +14,7 @@ class VideoController extends Controller
         if ($req->id) {
             $data = Video::with('anime')->findOrFail($req->id);
         } else {
-            $data = Video::with('anime')->paginate($req->per_page)->items();
+            $data = Video::with('anime')->paginate($req->per_page ? $req->per_page : 10);
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);

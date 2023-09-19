@@ -16,7 +16,7 @@ class StreamController extends Controller
         if ($req->id) {
             $data = Stream::findOrFail($req->id);
         } else {
-            $data = Stream::paginate($req->per_page)->items();
+            $data = Stream::all();
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);

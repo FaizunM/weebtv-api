@@ -14,7 +14,7 @@ class GenreController extends Controller
         if ($req->id) {
             $data = Genre::findOrFail($req->id);
         } else {
-            $data = Genre::paginate($req->per_page)->items();
+            $data = Genre::all();
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);

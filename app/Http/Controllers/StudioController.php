@@ -14,7 +14,7 @@ class StudioController extends Controller
         if ($req->id) {
             $data = Studio::findOrFail($req->id);
         } else {
-            $data = Studio::paginate($req->per_page)->items();
+            $data = Studio::all();
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);

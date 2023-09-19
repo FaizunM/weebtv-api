@@ -14,7 +14,7 @@ class AnimeController extends Controller
         if ($req->id) {
             $data = Anime::with('studio')->findOrFail($req->id);
         } else {
-            $data = Anime::with('studio')->paginate($req->per_page || 10)->items();
+            $data = Anime::with('studio')->paginate($req->per_page? $req->per_page : 10);
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);

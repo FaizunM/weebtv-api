@@ -15,7 +15,7 @@ class UserController extends Controller
         if ($req->id) {
             $data = User::findOrFail($req->id);
         } else {
-            $data = User::paginate($req->per_page)->items();
+            $data = User::paginate($req->per_page?$req->per_page:10);
         }
 
         return response()->json(['status' => 1, 'data' => $data], 200);
